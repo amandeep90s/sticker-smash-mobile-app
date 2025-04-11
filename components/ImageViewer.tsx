@@ -3,10 +3,13 @@ import { StyleSheet } from "react-native";
 
 type Props = {
 	imgSource: string;
+	selectedImage?: string;
 };
 
-export default function ImageViewer({ imgSource }: Readonly<Props>) {
-	return <Image source={imgSource} style={styles.image} />;
+export default function ImageViewer({ imgSource, selectedImage }: Readonly<Props>) {
+	const imageSource = selectedImage ? { uri: selectedImage } : imgSource;
+
+	return <Image source={imageSource} style={styles.image} />;
 }
 
 const styles = StyleSheet.create({
